@@ -26,8 +26,30 @@
         </div>
       </div>
 
-    <div class="bg-blue-200">
-        TESTE
+    <div class="bg-white rounded-md shadow-md m-6 p-6">
+        <div class="font-bold text-lg">
+            Ofertas do dia
+        </div>
+
+        <div class="grid grid-cols-4 gap-3">
+            {{-- for (variavel = inicio; até onde; de quanto aumenta) --}}
+            @for ($i = 0; $i < 76; $i++)
+
+                <div class="card bg-base-100 shadow-xl">
+                    <figure><img src="https://picsum.photos/400?random={{$i}}" alt="Shoes" /></figure>
+                    <div class="card-body">
+                        <h2 class="card-title">{{fake()->company()}}</h2>
+                        <p>{{fake()->realText(100, 1)}}</p>
+                        <div class="card-actions justify-end">
+                            <button class="btn btn-primary">Compre já</button>
+                        </div>
+                    </div>
+                </div>
+
+            @endfor
+
+        </div>
+
     </div>
 
 </x-layout_base>

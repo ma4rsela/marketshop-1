@@ -51,14 +51,14 @@
       </div>
 
     </div>
-    <div class="navbar-center hidden lg:flex">
+    <div class="navbar-center hidden lg:flex z-40">
       <ul class="menu menu-horizontal px-1">
 
         <li>
           <details>
             <summary>Categorias</summary>
             <ul class="p-2">
-                <li><a>Veiculos</a></li>
+                <li><a class="text-black">Veiculos</a></li>
                 <li><a>Mercado</a></li>
                 <li><a>Tecnologia</a></li>
                 <li><a>Casa e móveis</a></li>
