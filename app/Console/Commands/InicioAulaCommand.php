@@ -26,8 +26,8 @@ class InicioAulaCommand extends Command
     public function handle()
     {
         // Executando composer install
-        $this->info('Executando composer install...');
-        exec('composer install');
+        // $this->info('Executando composer install...');
+        // exec('composer install');
 
         // Executando npm install
         $this->info('Executando npm install...');
