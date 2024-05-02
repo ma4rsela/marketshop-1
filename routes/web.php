@@ -17,6 +17,7 @@ Route::view('/testedeconteudo', 'teste');
 
 Route::post('/salva-usuario',
 function (Request $request) {
+<<<<<<< HEAD
     //dd($request);
 
 
@@ -28,6 +29,16 @@ function (Request $request) {
 $usuario->save();
 dd("salvo com sucesso!!");
 
+=======
+    // dd($request);
+
+    $usuario = new User();
+    $usuario->name = $request->nome;
+    $usuario->email = $request->email;
+    $usuario->password = $request->senha;
+    $usuario->save();
+    dd("Salvo com sucesso!!");
+>>>>>>> 1e83e6e68d2458c15459e2b21e97c2b80e54865d
 
 })->name('salva-usuario');
 
