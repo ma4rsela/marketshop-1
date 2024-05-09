@@ -1,44 +1,53 @@
-<?php
+    <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-use App\Models\User;
+    use Illuminate\Support\Facades\Route;
+    use Illuminate\Http\Request;
+    use App\Models\User;
+    use App\Models\Produto;
+
+    Route::get('/home', function () {
+        return view('welcome');
+    });
+
+    //Route::view('/', 'home');
+
+    Route::get('/', function() {
+
+    //dd(Produto::all());
+
+        $ListaProdutos = Produto::all();
+
+        return view('home', compact('ListaProdutos'));
+    });
+
+    Route::view('/cria-conta', 'cria-conta');
+
+    Route::view('/testedeconteudo', 'teste');
+
+    Route::post('/salva-usuario',
+    function (Request $request) {
+
+        //dd($request);
 
 
-Route::get('/home', function () {
-    return view('welcome');
-});
+        $usuario = new User();
 
-Route::view('/', 'home');
-
-Route::view('/cria-conta', 'cria-conta');
-
-Route::view('/testedeconteudo', 'teste');
-
-Route::post('/salva-usuario',
-function (Request $request) {
-<<<<<<< HEAD
-    //dd($request);
-
-
-    $usuario = new User();
-
-    $usuario->name = $request->nome;
-    $usuario->email = $request->email;
-    $usuario->password = $request->senha;
-$usuario->save();
-dd("salvo com sucesso!!");
-
-=======
-    // dd($request);
-
-    $usuario = new User();
-    $usuario->name = $request->nome;
-    $usuario->email = $request->email;
-    $usuario->password = $request->senha;
+        $usuario->name = $request->nome;
+        $usuario->email = $request->email;
+        $usuario->password = $request->senha;
     $usuario->save();
-    dd("Salvo com sucesso!!");
->>>>>>> 1e83e6e68d2458c15459e2b21e97c2b80e54865d
+    dd("salvo com sucesso!!");
 
-})->name('salva-usuario');
+
+        // dd($request);
+
+        $usuario = new User();
+        $usuario->name = $request->nome;
+        $usuario->email = $request->email;
+        $usuario->password = $request->senha;
+        $usuario->save();
+        dd("Salvo com sucesso!!");
+
+
+    })->name('salva-usuario');
 

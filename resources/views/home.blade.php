@@ -33,20 +33,29 @@
 
         <div class="grid grid-cols-4 gap-3">
             {{-- for (variavel = inicio; até onde; de quanto aumenta) --}}
-            @for ($i = 0; $i < 76; $i++)
-
-                <div class="card bg-base-100 shadow-xl">
-                    <figure><img src="https://picsum.photos/400?random={{$i}}" alt="Shoes" /></figure>
+ 
+            @foreach ($ListaProdutos as $produto)
+            <div class="card bg-base-100 shadow-xl">
+                    <figure><img class= "aspect-square w-full object-contain" src="{{$produto->foto}}" alt="Shoes" /></figure>
                     <div class="card-body">
-                        <h2 class="card-title">{{fake()->company()}}</h2>
-                        <p>{{fake()->realText(100, 1)}}</p>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Compre já</button>
+                        <h2 class="card-title">{{$produto->nome}}</h2>
+                        <p>{{$produto->descricao}}</p>
+                        <div class="card-actions justify-between">
+
+                        <div class="p-4 m-2 font-bold text-decoration: underline  ">
+                          R${{$produto->valor}}
+                      
+                        </div>
+
+                            <button class=" m-2 btn bg-yellow-200 text-black font-semibold btn-primary">Compre já</button>
                         </div>
                     </div>
                 </div>
+          
 
-            @endfor
+            @endforeach
+
+           
 
         </div>
 
