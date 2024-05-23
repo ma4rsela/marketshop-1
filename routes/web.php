@@ -51,3 +51,7 @@
 
     })->name('salva-usuario');
 
+//------------------------------PRODUTOS--------------------------------
+
+
+Route::view('/cadastra-produto', 'cadastra-produto');
