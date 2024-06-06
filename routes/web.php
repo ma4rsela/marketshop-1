@@ -55,3 +55,33 @@
 
 
 Route::view('/cadastra-produto', 'cadastra-produto');
+
+
+Route::post('salva-produto',
+function (Request $request) {
+    //dd($request);
+
+    $produto = new Produto();
+    $produto->nome = $request->nome;
+    $produto->descricao = $request->descricao;
+    $produto->valor = $request->valor;
+
+
+    //pega arquivo enviado
+    $file = $request->file('foto');
+
+    //salva na pasta fotos, subpasta produtos
+    $foto = $file->store('produtos',['disk' => 'fotos']);
+
+    //adiciona foto ao produto
+    $produto->foto= $foto;
+
+    //pega id do usuário que salvou a foto
+    $produto->user_id = 1;//SERA MODIFICADO PARA PEGAR O USUSARIO LOGADO
+
+    //salva produto no banco
+    $produto->save();
+
+    dd("Salvo com sucesso!!");
+
+})->name('salva-produto');
