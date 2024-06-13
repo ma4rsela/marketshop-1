@@ -36,7 +36,12 @@
  
             @foreach ($ListaProdutos as $produto)
             <div class="card bg-base-100 shadow-xl">
-                    <figure><img class= "  aspect-square w-full object-contain" src="{{$produto->foto}}" alt="Shoes" /></figure>
+                    <figure><img class= "  aspect-square
+                     w-full object-cover" src="{{
+                      strpos ($produto->foto, 'produtos')===0? 
+                      asset('fotos/'.$produto->foto) : $produto->foto
+                    }}" alt="Shoes"/>
+                     
                     <div class="card-body">
                         <h2 class="card-title">{{$produto->nome}}</h2>
                         <p>{{$produto->descricao}}</p>

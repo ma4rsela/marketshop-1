@@ -22,6 +22,8 @@
 
     Route::view('/cria-conta', 'cria-conta');
 
+
+
     Route::view('/testedeconteudo', 'teste');
 
     Route::post('/salva-usuario',
@@ -54,8 +56,7 @@
 //------------------------------PRODUTOS--------------------------------
 
 
-Route::view('/cadastra-produto', 'cadastra-produto');
-
+Route::view('/cadastra-produto', 'cadastra-produto')->middleware('auth');
 
 Route::post('salva-produto',
 function (Request $request) {
@@ -65,6 +66,7 @@ function (Request $request) {
     $produto->nome = $request->nome;
     $produto->descricao = $request->descricao;
     $produto->valor = $request->valor;
+
 
 
     //pega arquivo enviado
@@ -82,6 +84,46 @@ function (Request $request) {
     //salva produto no banco
     $produto->save();
 
-    dd("Salvo com sucesso!!");
+    //dd("Salvo com sucesso!!")->middleware('auth');
+    return redirect('/');
 
-})->name('salva-produto');
+})->name('salva-produto')->middleware('auth');
+
+
+
+//----login-------
+Route::view('/login','login')->name("login");
+
+Route::post('/logar', function (Request $request){
+
+    //dd($request);
+
+return redirect('/login');
+
+
+
+//verifica se a pessoa preencheu os campos de login
+$credentials = $request->validate([
+'email' => ['required', 'email'], //verificar se tem email e se é email
+'senha' => ['required'], //verificar se tem senha
+
+]);
+
+//compara se os dados no banco são iguais o que ele preencheu
+if(Auth::attempt(['email' => $request->email, 'password' => $request->senha])) {
+    //cria sessão do usuario logado
+    $request->session()->regenerate();
+    //redireciona para a tela de cadastro de produtos
+    return redirect()->intended('/cadastra-produto');
+}
+else{
+    dd("Usuário ou senha incorretos");
+
+}
+})->name('logar');
+
+Route::get('/sair', function (){
+Auth::logout();
+return redirect('/');
+
+});

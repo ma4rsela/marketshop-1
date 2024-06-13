@@ -1,10 +1,10 @@
     <x-layout_base>
 
-    <div class="bg-white   p-4 sm:p-7 bg-[#6959CD]">
+    <div class="p-4 sm:p-7 bg-[#6959CD]">
         
 
     <!-- Card Section -->
-     <div class=" max-w-2xl  py-2 sm:px-6  lg:px-2 mx-auto">
+     <div class="  max-w-2xl  py-2 sm:px-6  lg:px-2 mx-auto">
 
     <form method= "POST" action ="{{route('salva-produto')}}" enctype="multipart/form-data">
       @csrf
@@ -13,7 +13,7 @@
     <!-- Card -->
 
 
-    <div class="bg-white rounded-xl ring-2 ring-[#87CEEB] p-4 sm:p-7 bg-[#87CEEB]">
+    <div class="rounded-xl ring-2 ring-[#87CEEB] p-4 sm:p-7 bg-[#87CEEB]">
 
 
     <img class="flex items-center   bg-white " src="https://www.smplaces.com.br/blog/wp-content/uploads/2021/06/4-dicas-essenciais-para-cadastrar-os-produtos-no-seu-e-commerce_11102019935400.png" alt="Image Description">

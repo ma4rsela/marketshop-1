@@ -9,5 +9,7 @@
 </head>
 <body data-theme="light" class="bg-gray-50 min-h-screen">
     {{$slot}}
+
+    
 </body>
 </html>
