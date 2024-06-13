@@ -41,6 +41,7 @@
                       strpos ($produto->foto, 'produtos')===0? 
                       asset('fotos/'.$produto->foto) : $produto->foto
                     }}" alt="Shoes"/>
+                  </figure>
                      
                     <div class="card-body">
                         <h2 class="card-title">{{$produto->nome}}</h2>
@@ -51,6 +52,7 @@
                        <div>R${{number_format($produto->valor,2,',','.')}} </div>
                       
                         </div>
+                        
 
                             <button class=" m-2 btn bg-yellow-200 text-black font-semibold btn-primary">Compre já</button>
                         </div>
